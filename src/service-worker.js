@@ -70,3 +70,13 @@ self.addEventListener('message', (event) => {
 });
 
 // Any other custom service worker logic can go here.
+// Push notifications
+self.addEventListener('push', (event) => {
+  const options = {
+    body: event.data.text(),
+  };
+
+  event.waitUntil(
+    self.registration.showNotification('Notificación Push', options)
+  );
+});
